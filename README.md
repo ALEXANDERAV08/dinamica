@@ -8,16 +8,16 @@ relacionan las salidas con las entradas, siguiendo ciertas reglas o principios q
 
 ![image](https://github.com/user-attachments/assets/c700e3b6-761f-4ef2-a49b-c98a3f75df17)
 
-## 2.🔑 Sistemas Dinamicos 
+## 2.🔑 SISTEMAS DINAMICOS 
 Un sistema dinamico es aquel donde lo que sucede ahora (su salida) esta influenciada por lo que ocurrio antes (su entrada) si su salida depende solo de la entrada actual, el sistema se conoce como 
 ESTATICO En resumen un sistema dinamico es aque donde las salidas estan influenciadas por entradas anteriores, mientras que un sistema que solo responde a las entradas del momento presente se denomina 
 sistema estatico
 
-## 3.🔑 Proceso
+## 3.🔑 PROCESOS
 Un proceso es el conjunto de acciones organizadas que permiten crear o desarrollar un producto o alcanzar un objetivo. En el campo del control, a veces se utiliza como equivalente a planta, aunque en 
 un sentido más preciso no son términos intercambiables.
 
-## 4.🔑 Planta
+## 4.🔑 PLANTA
 Una planta se refiere al conjunto de componentes físicos que permiten ejecutar un proceso, como maquinaria o infraestructura. Este conjunto puede ser descrito mediante modelos matemáticos y representado 
 como uno o varios sistemas interconectados que permiten entender y controlar su comportamiento.
 
@@ -127,6 +127,21 @@ basicamente toma una funcion en el tiempo y la transforma el dominio de la frecu
 ![image](https://github.com/user-attachments/assets/bd13df49-0c43-4438-a19b-47a7421f2281)
 
 $$\mathcal{L}\{f(t)\} = F(s) = \int_{0}^{\infty} e^{-st} f(t) \, dt$$
+
+## CLASIFICACION DE ENTRADAS DE UN SISTEMA
+
+**- Escalón unitario u(t)**
+
+![68747470733a2f2f692e706f7374696d672e63632f4c346b50313944572f696d6167652e706e67](https://github.com/user-attachments/assets/bd41c1cb-8a35-4018-a4c6-b57caa00c63d)
+
+**- Impulso unitario δ(t)**
+
+![download](https://github.com/user-attachments/assets/13ff1316-cd45-4e19-9099-495a6f054055)
+
+**Rampa r(t)=tu(t)**
+Es una señal que aumenta linealmente con el tiempo después de t=0.Definición matemática:
+
+![image](https://github.com/user-attachments/assets/4d343586-5fa9-408e-bfec-1a983c861b95)
 
 **💡Ejemplo transformada de una funcion exponencial**
 
@@ -416,7 +431,7 @@ $$5s + 3 = a_1(s - 1) + a_2(s + 2)$$
 
 $$5(-2) + 3 = a_1(-2 - 1) + a_2(0)$$
 
-$$-10 + 3 = -3a_1$      $a_1 = \frac{7}{3}$$
+$$-10 + 3 = -3a_1$      a_1 = \frac{7}{3}$$
 
 **Para s = 1:**
 
@@ -428,7 +443,7 @@ $$5 + 3 = 3a_2$        $a_2 = \frac{8}{3}$$
 
 $$\frac{5s + 3}{(s + 2)(s - 1)} = \frac{7}{3(s + 2)} + \frac{8}{3(s - 1)}$$
 
-## 🔑Transformada Inversa de Laplace para el 
+## 🔑Transformada Inversa de Laplace para LOS SIGUIENTES CASOS:
 
 **🔑Caso 1:** Raíces reales diferentes 
 
@@ -448,5 +463,97 @@ $$f(t) = \sum_{k=1}^{n} a_k e^{-p_k t}$$
 Este resultado muestra que la solución en el dominio del tiempo es una combinación lineal de exponentes decrecientes, donde los coeficientes akdependen de la expansión en 
 fracciones parciales.
 
-**🔑CASO 2:**
+**💡Ejemplo:**
+
+$$\frac{5}{(S+2)(S+3)}$$
+
+**Paso 1:** Descomposicion en fracciones parciales 
+
+$$\frac{5}{(S+2)(S+3)} = \frac{A}{(S+2)} + \frac{B}{(S+3)}$$
+
+Multiplicamos por el denominador común:
+
+$$5=A(s+3)+B(s+2)$$
+
+Desarrollamos:
+
+$$5=As+3A+Bs+2B$$
+
+Agrupamos términos:
+
+$$5=(A+B)s+(3A+2B)$$
+
+**Paso 2:** Resolver el sistema de ecuaciones
+
+Comparando coeficientes:
+
+$$1). A+B=0$$
+
+$$2). 3A+2B=5$$
+
+De la ecuación 1: B=−A, sustituyendo en la ecuación 2:
+
+$$3A+2(−A)=5$$
+
+$$3A−2A=5⇒A=5$$
+
+$$B=−5$$
+
+**Paso 3:** Aplicar la Transformada Inversa
+
+$$\mathcal{L}^{-1} \left( \frac{1}{s+a} \right) = e^{-at}$$
+
+$$\mathcal{L}^{-1} \left( \frac{5}{s+2} \right) = 5e^{-2t}, \quad 
+\mathcal{L}^{-1} \left( \frac{-5}{s+3} \right) = -5e^{-3t}$$
+
+$$f(t) = 5e^{-2t} - 5e^{-3t}$$
+
+
+**🔑CASO 2:** Raíces reales iguales (raíces repetidas)
+
+Este caso ocurre cuando el denominador de F(s) tiene raíces repetidas, es decir, un factor de la forma $(s+a)^n con n>1$.
+
+**💡Ejemplo:**
+
+$$F(s) = \frac{6}{(S+2){^2}}$$
+
+**Paso 1:** Descomposición en Fracciones Parciales
+
+$$\frac{6}{(S+2){^2}} = \frac{A}{(S+2)} + \frac{B}{(S+2){^2}}$$
+
+Multiplicamos por el denominador común (s+2)^2 en ambos lados:
+
+$$6=A(s+2)+B$$
+
+**Paso 2:** Resolver para A y B
+
+Sustituyamos s=−2:
+
+$$6=A(0)+B⇒B=6$$
+
+Derivamos ambos lados con respecto a **s** para encontrar A:
+
+$$0=A$$
+
+Entonces:
+
+$$A=0,B=6$$
+
+Por lo tanto:
+
+$$F(s) = \frac{6}{(S+2){^2}}$$
+
+**Paso 3:** Aplicar la Transformada Inversa
+
+De la tabla de transformadas:
+
+$$\mathcal{L}^{-1} \left( \frac{(s+a)^2}{1} \right) = t e^{-at}$$
+
+Aplicamos esto con a = 2:
+
+$$\mathcal{L}^{-1} \left( \frac{(s+2)^2}{6} \right) = 6t e^{-2t}$$
+
+**Resultado final:**
+
+$$f(t) = 6t e^{-2t}$$
 
